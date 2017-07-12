@@ -5,10 +5,10 @@ class Portfolio < ApplicationRecord
                                 reject_if: lambda { |attrs| attrs['name'].blank? }
 
   validates_presence_of :title, :body
-  
-  mount_uploader :thumn_image, PorftolioUploader
+
+  mount_uploader :thumb_image, PortfolioUploader
   mount_uploader :main_image, PortfolioUploader
-  
+
   def self.angular
     where(subtitle: 'Angular')
   end
