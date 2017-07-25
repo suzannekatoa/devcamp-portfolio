@@ -5,21 +5,16 @@ class Portfolio < ApplicationRecord
                                 reject_if: lambda { |attrs| attrs['name'].blank? }
 
 
-  validates_presence_of :title, :body, :thumb_image, :main_image,
+  validates_presence_of :title, :body, :thumb_image, :main_image
 
 
   def self.angular
     where(subtitle: 'Angular')
   end
 
+scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
    
-  def self.by_position
-    order("position ASC")
-  end
   
-  
- scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
- 
  after_initialize :set_defaults
 
   def set_defaults
