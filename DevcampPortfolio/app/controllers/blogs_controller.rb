@@ -8,16 +8,12 @@ class BlogsController < ApplicationController
   def index
       @blogs = Blog.page(params[:page]).per(5)
       @page_title = "My Portfolio Blog"
-    else
-      @blogs = Blog.all
   end
   # GET /blogs/1
   # GET /blogs/1.json
   def show
       @page_title = @blog.title
       @seo_keywords = @blog.body
-    else
-      redirect_to blogs_path, notice: "You are not authorized to access this page"
   end
 
   # GET /blogs/new

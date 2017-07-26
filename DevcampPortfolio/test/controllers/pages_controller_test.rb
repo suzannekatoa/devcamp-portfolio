@@ -1,19 +1,12 @@
-require 'test_helper'
-
-class PagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get pages_home_url
-    assert_response :success
+module DefaultPageContent
+  extend ActiveSupport::Concern
+  
+  included do
+    before_filter :set_page_defaults
   end
-
-  test "should get about" do
-    get pages_about_url
-    assert_response :success
+  
+  def set_page_defaults
+    @page_title = "Devcamp Portfolio | My Portfolio Website"
+    @seo_keywords = "YourName portfolio"
   end
-
-  test "should get contact" do
-    get pages_contact_url
-    assert_response :success
-  end
-
 end
