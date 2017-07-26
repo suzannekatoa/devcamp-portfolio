@@ -6,12 +6,11 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    if logged_in?(:site_admin)
-      @blogs = Blog.special_blogs
+      @blogs = Blog.page(params[:page]).per(5)
       @page_title = "My Portfolio Blog"
     else
       @blogs = Blog.all
-    end
+  end
   # GET /blogs/1
   # GET /blogs/1.json
   def show
@@ -20,7 +19,6 @@ class BlogsController < ApplicationController
     else
       redirect_to blogs_path, notice: "You are not authorized to access this page"
   end
-end
 
   # GET /blogs/new
   def new
