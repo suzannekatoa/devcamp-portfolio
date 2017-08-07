@@ -13,6 +13,7 @@ class PortfoliosController < ApplicationController
   end
   
   render nothing: true
+  end
 
   def angular
     @angular_portfolio_items = Portfolio.angular
@@ -74,6 +75,8 @@ class PortfoliosController < ApplicationController
     params.require(:portfolio).permit(:title,
                                       :subtitle,
                                       :body,
+                                      :main_image,
+                                      :thumb_image,
                                       technologies_attributes: [:name]
                                      )
   end
@@ -81,5 +84,4 @@ class PortfoliosController < ApplicationController
   def set_portfolio_item
      @portfolio_item = Portfolio.find(params[:id])
   end
-end
 end
