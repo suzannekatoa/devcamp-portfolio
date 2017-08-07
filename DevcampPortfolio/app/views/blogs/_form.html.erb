@@ -2,8 +2,9 @@
   <% if blog.errors.any? %>
     <% blog.errors.full_messages.each do |error| %>
       <%= js add_gritter(error, title: "Suzanne Katoa Portfolio", sticky: false) %>
-    <% end %>
+    <%= alert_generator error %>
   <% end %>
+<% end %>
 
   <div class="form-group">
     <%= f.text_field :title, class: 'form-control', placeholder: "Title" %>
